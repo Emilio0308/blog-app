@@ -46,9 +46,9 @@ const globalErrorHandler = (err, req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     let error = err;
 
-    if (error.parent.code === '23505') error = handleCastError23505();
-    if (error.name === 'TokenExpiredError') error = handleJWTExpired();
-    if (error.name === 'JsonWebTokenError') error = handleJWTError();
+    if (error?.parent?.code === '23505') error = handleCastError23505();
+    if (error?.name === 'TokenExpiredError') error = handleJWTExpired();
+    if (error?.name === 'JsonWebTokenError') error = handleJWTError();
 
     sendErrorProd(error, res);
   }
